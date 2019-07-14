@@ -1,1 +1,0 @@
-@googleFeature: Google results title  Scenario Outline: Verify valid search result url    Given Google lending page    When User is searching <search>    Then User capture first result url    And Click to the first result    Then Search url must match website url    Examples:      | search       |      | Java         |      | JUnit        |      | Rest Assured |
