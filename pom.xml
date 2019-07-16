@@ -13,8 +13,48 @@
 
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
 
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+
+            </plugin>
+            <plugin>
+
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <configuration><testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+
+            </plugin>
+            <plugin>
+
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>2.8.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals><goal>generate</goal></goals>
+                        <configuration>
+                            <projectName>Test1</projectName>
+                            <outputDirectory>${project.build.directory}/cucumber-report-html </outputDirectory>
+                            <cucumberOutput>${project.build.directory}/cucumber.json </cucumberOutput>
+                        </configuration>
+                    </execution>
+                </executions>
+
+
+            </plugin>
+        </plugins>
+    </build>
     <dependencies>
+
         <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
         <dependency>
             <groupId>com.github.javafaker</groupId>
@@ -59,6 +99,18 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>6.14.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-expressions</artifactId>
+            <version>6.2.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
